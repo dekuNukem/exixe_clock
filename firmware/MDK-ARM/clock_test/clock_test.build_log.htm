@@ -27,10 +27,14 @@ Project File Date:  09/25/2017
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 1 (build 61)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'clock_test'
-compiling helpers.c...
+compiling main.c...
+../Src/main.c(345): warning:  #177-D: function "MX_IWDG_Init" was declared but never referenced
+  static void MX_IWDG_Init(void)
+../Src/main.c: 1 warning, 0 errors
+compiling my_tasks.c...
 linking...
-Program Size: Code=31876 RO-data=1068 RW-data=512 ZI-data=10072  
-"clock_test\clock_test.axf" - 0 Error(s), 0 Warning(s).
+Program Size: Code=31704 RO-data=1072 RW-data=512 ZI-data=10056  
+"clock_test\clock_test.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -48,7 +52,7 @@ Package Vendor: ARM
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:4.3.0
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:05
 </pre>
 </body>
 </html>

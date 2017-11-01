@@ -252,7 +252,7 @@ void gps_temp_parse_task_start(void const * argument)
   uint8_t loop_count = 0;
   for(;;)
   {
-    HAL_IWDG_Refresh(iwdg_ptr);
+    // HAL_IWDG_Refresh(iwdg_ptr);
     if(linear_buf_line_available(&gps_lb))
     {
       parse_gps((char*)gps_lb.buf, &gps_rmc, &gps_gga, &gps_gsa, &gps_gll, &gps_gst, &gps_gsv);
