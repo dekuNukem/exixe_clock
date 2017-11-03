@@ -145,15 +145,15 @@ int main(void)
   MX_I2C1_Init();
   MX_USART1_UART_Init();
   MX_RTC_Init();
-  // MX_IWDG_Init();
+  MX_IWDG_Init();
 
   /* USER CODE BEGIN 2 */
   MX_USB_DEVICE_Init();
   my_usb_init();
   delay_us_init(&htim2);
-  // HAL_IWDG_Refresh(iwdg_ptr);
+  HAL_IWDG_Refresh(iwdg_ptr);
   setup_task();
-  // HAL_IWDG_Refresh(iwdg_ptr);
+  HAL_IWDG_Refresh(iwdg_ptr);
   /* USER CODE END 2 */
 
   /* USER CODE BEGIN RTOS_MUTEX */

@@ -80,7 +80,7 @@ int32_t linear_buf_idle(linear_buf *lb, int32_t timeout)
 uint8_t rtc_gps_calib(struct minmea_sentence_rmc *gps_rmc)
 {
   static int32_t next_rtc_calib = 0;
-  if(HAL_GetTick() < 5000 || HAL_GetTick() < next_rtc_calib)
+  if(HAL_GetTick() < 2000 || HAL_GetTick() < next_rtc_calib)
     return 1;
   time_to_update.Hours = gps_rmc->time.hours;
   time_to_update.Minutes = gps_rmc->time.minutes;
