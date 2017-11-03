@@ -16,7 +16,7 @@
 #include "config.h"
 #include "buttons.h"
 
-// uncomment this to use IN-12 tubes
+// comment this out to use IN-12 tubes
 #define USE_EXIXE_14
 
 #ifdef USE_EXIXE_14

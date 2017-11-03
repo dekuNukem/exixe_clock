@@ -17,7 +17,7 @@
 #define SETUP_NO_SETUP 0
 #define SETUP_UTC_OFFSET 1
 #define SETUP_12H24H 2
-#define RTC_CALIB_FREQ_MS 30000
+#define RTC_CALIB_FREQ_MS 5000
 
 typedef struct
 {
