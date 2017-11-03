@@ -42,7 +42,7 @@ exixe clock makes use of the [exixe modules](https://github.com/dekuNukem/exixe)
 
 ### Setting time
 
-Connect a GPS antenna and place it where you can see sky, time will be automatically set when a GPS fix is obtained. You might have to wait 2 or 3 minutes, but it's usually faster.
+Connect a GPS antenna and place it under clear sky, time will be automatically set and saved when a GPS fix is obtained. You might have to wait 2 or 3 minutes, but it's usually faster.
 
 ### Setting timezone
 
