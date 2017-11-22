@@ -105,3 +105,12 @@ Next up is timing, instead of manually setting time and using built-in RTC, I de
 Each digit update is triggered by the timepulse signal from the GNSS receiver, synced to the UTC.
 
 A bunch of extra features was thrown in during the design process as well. I added a temperature sensor so the tubes can optionally display hour:minute:temp instead of hour:minute:second, a blue LED lights up when GPS fix is acquired, 2 capacitive touchpad was added for buttonless controls, a light sensor was added for automatic brightness adjustment, SD card slot was added for data logging, and UART header was added for debugging and expansion.
+
+## Building one yourself
+
+bom is here
+
+version differences
+
+bare photos
+
