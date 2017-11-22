@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.2.0">
+<eagle version="8.3.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
+<setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
@@ -9863,35 +9864,35 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </classes>
 <parts>
 <part name="+3V1" library="backplane" deviceset="+3V3" device=""/>
-<part name="C2" library="clock" deviceset="C-US" device="C1210"/>
+<part name="C2" library="clock" deviceset="C-US" device="C1210" value="47uF"/>
 <part name="GND2" library="backplane" deviceset="GND" device=""/>
 <part name="GND3" library="backplane" deviceset="GND" device=""/>
 <part name="+3V3" library="backplane" deviceset="+3V3" device=""/>
 <part name="GND10" library="backplane" deviceset="GND" device=""/>
-<part name="C6" library="clock" deviceset="CAP" device="0805"/>
-<part name="C7" library="clock" deviceset="CAP" device="0805"/>
-<part name="C8" library="clock" deviceset="CAP" device="0805"/>
+<part name="C6" library="clock" deviceset="CAP" device="0805" value="100nF"/>
+<part name="C7" library="clock" deviceset="CAP" device="0805" value="100nF"/>
+<part name="C8" library="clock" deviceset="CAP" device="0805" value="100nF"/>
 <part name="+3V11" library="backplane" deviceset="+3V3" device=""/>
 <part name="GND14" library="backplane" deviceset="GND" device=""/>
-<part name="R7" library="clock" deviceset="RESISTOR" device="0805-RES"/>
+<part name="R7" library="clock" deviceset="RESISTOR" device="0805-RES" value="4K7"/>
 <part name="PWR" library="backplane" deviceset="LED" device="CHIP-LED0805"/>
 <part name="+3V14" library="backplane" deviceset="+3V3" device=""/>
 <part name="GND18" library="backplane" deviceset="GND" device=""/>
-<part name="C11" library="clock" deviceset="CAP" device="0805"/>
-<part name="C12" library="clock" deviceset="CAP" device="0805"/>
-<part name="R8" library="clock" deviceset="RESISTOR" device="0805-RES"/>
+<part name="C11" library="clock" deviceset="CAP" device="0805" value="20p"/>
+<part name="C12" library="clock" deviceset="CAP" device="0805" value="20p"/>
+<part name="R8" library="clock" deviceset="RESISTOR" device="0805-RES" value="4K7"/>
 <part name="+3V15" library="backplane" deviceset="+3V3" device=""/>
 <part name="LED2" library="backplane" deviceset="LED" device="CHIP-LED0805"/>
 <part name="+3V16" library="backplane" deviceset="+3V3" device=""/>
 <part name="IC1" library="joyAnalog" deviceset="STM32F072C8T6" device=""/>
-<part name="R1" library="clock" deviceset="RESISTOR" device="0805-RES"/>
+<part name="R1" library="clock" deviceset="RESISTOR" device="0805-RES" value="4K7"/>
 <part name="IC3" library="microchip" deviceset="24*" device="ST" technology="C64"/>
 <part name="GND11" library="backplane" deviceset="GND" device=""/>
 <part name="GND12" library="backplane" deviceset="GND" device=""/>
 <part name="+3V4" library="backplane" deviceset="+3V3" device=""/>
 <part name="GND13" library="backplane" deviceset="GND" device=""/>
-<part name="R2" library="clock" deviceset="RESISTOR" device="0805-RES"/>
-<part name="R3" library="clock" deviceset="RESISTOR" device="0805-RES"/>
+<part name="R2" library="clock" deviceset="RESISTOR" device="0805-RES" value="4K7"/>
+<part name="R3" library="clock" deviceset="RESISTOR" device="0805-RES" value="4K7"/>
 <part name="+3V5" library="backplane" deviceset="+3V3" device=""/>
 <part name="+3V6" library="backplane" deviceset="+3V3" device=""/>
 <part name="+3V9" library="backplane" deviceset="+3V3" device=""/>
@@ -9905,7 +9906,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="GND23" library="backplane" deviceset="GND" device=""/>
 <part name="GND24" library="backplane" deviceset="GND" device=""/>
 <part name="GND25" library="backplane" deviceset="GND" device=""/>
-<part name="X2" library="adafruit" deviceset="XTAL" device="-3.2X1.5"/>
+<part name="X2" library="adafruit" deviceset="XTAL" device="-3.2X1.5" value="32.768KHz"/>
 <part name="GND26" library="backplane" deviceset="GND" device=""/>
 <part name="GND27" library="backplane" deviceset="GND" device=""/>
 <part name="U$1" library="exixe_module" deviceset="EXIXE" device=""/>
@@ -9931,19 +9932,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="U$13" library="a" deviceset="M3_MOUNTING_HOLE" device=""/>
 <part name="JP1" library="nixie_power" deviceset="EBAY_MODULE" device="" technology="EBAY"/>
 <part name="JP2" library="nixie_power" deviceset="EBAY_MODULE" device="TAOBAO"/>
-<part name="C4" library="clock" deviceset="C-US" device="C1210"/>
-<part name="+3V17" library="backplane" deviceset="+3V3" device=""/>
-<part name="GND29" library="backplane" deviceset="GND" device=""/>
-<part name="C5" library="clock" deviceset="C-US" device="C1210"/>
-<part name="+3V18" library="backplane" deviceset="+3V3" device=""/>
-<part name="GND30" library="backplane" deviceset="GND" device=""/>
-<part name="C9" library="clock" deviceset="C-US" device="C1210"/>
-<part name="+3V19" library="backplane" deviceset="+3V3" device=""/>
-<part name="GND31" library="backplane" deviceset="GND" device=""/>
-<part name="C10" library="clock" deviceset="C-US" device="C1210"/>
-<part name="+3V20" library="backplane" deviceset="+3V3" device=""/>
-<part name="GND32" library="backplane" deviceset="GND" device=""/>
-<part name="C13" library="clock" deviceset="C-US" device="C1210"/>
+<part name="C13" library="clock" deviceset="C-US" device="C1210" value="47uF"/>
 <part name="+3V21" library="backplane" deviceset="+3V3" device=""/>
 <part name="GND33" library="backplane" deviceset="GND" device=""/>
 <part name="GND1" library="backplane" deviceset="GND" device=""/>
@@ -9954,7 +9943,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="P+2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="GND36" library="backplane" deviceset="GND" device=""/>
 <part name="+3V23" library="backplane" deviceset="+3V3" device=""/>
-<part name="C14" library="clock" deviceset="C-US" device="C1210"/>
+<part name="C14" library="clock" deviceset="C-US" device="C1210" value="47uF"/>
 <part name="GND37" library="backplane" deviceset="GND" device=""/>
 <part name="JP3" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X2" device=""/>
 <part name="+3V24" library="backplane" deviceset="+3V3" device=""/>
@@ -9973,22 +9962,22 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="GND42" library="backplane" deviceset="GND" device=""/>
 <part name="C18" library="clock" deviceset="CAP" device="0805"/>
 <part name="GND43" library="backplane" deviceset="GND" device=""/>
-<part name="R11" library="clock" deviceset="RESISTOR" device="0805-RES"/>
-<part name="R12" library="clock" deviceset="RESISTOR" device="0805-RES"/>
+<part name="R11" library="clock" deviceset="RESISTOR" device="0805-RES" value="10"/>
+<part name="R12" library="clock" deviceset="RESISTOR" device="0805-RES" value="10"/>
 <part name="C19" library="clock" deviceset="CAP" device="0805"/>
 <part name="GND44" library="backplane" deviceset="GND" device=""/>
 <part name="+3V27" library="backplane" deviceset="+3V3" device=""/>
-<part name="R13" library="clock" deviceset="RESISTOR" device="0805-RES"/>
+<part name="R13" library="clock" deviceset="RESISTOR" device="0805-RES" value="4K7"/>
 <part name="GND45" library="backplane" deviceset="GND" device=""/>
 <part name="X3" library="basicBoard" deviceset="USB" device="-MICROB"/>
 <part name="GND17" library="backplane" deviceset="GND" device=""/>
-<part name="L1" library="basicBoard" deviceset="INDUCTOR" device="0805"/>
-<part name="C17" library="clock" deviceset="CAP" device="0805"/>
+<part name="L1" library="basicBoard" deviceset="INDUCTOR" device="0805" value="33nH"/>
+<part name="C17" library="clock" deviceset="CAP" device="0805" value="20pF"/>
 <part name="GND20" library="backplane" deviceset="GND" device=""/>
-<part name="R4" library="clock" deviceset="RESISTOR" device="0805-RES"/>
-<part name="R5" library="clock" deviceset="RESISTOR" device="0805-RES"/>
-<part name="R14" library="clock" deviceset="RESISTOR" device="0805-RES"/>
-<part name="R15" library="clock" deviceset="RESISTOR" device="0805-RES"/>
+<part name="R4" library="clock" deviceset="RESISTOR" device="0805-RES" value="10"/>
+<part name="R5" library="clock" deviceset="RESISTOR" device="0805-RES" value="100"/>
+<part name="R14" library="clock" deviceset="RESISTOR" device="0805-RES" value="100"/>
+<part name="R15" library="clock" deviceset="RESISTOR" device="0805-RES" value="100"/>
 <part name="G1" library="basicBoard" deviceset="CH291-1220LF" device=""/>
 <part name="U$17" library="basicBoard" deviceset="VBAT" device=""/>
 <part name="GND34" library="backplane" deviceset="GND" device=""/>
@@ -10000,7 +9989,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="JP5" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X4" device=""/>
 <part name="GND40" library="backplane" deviceset="GND" device=""/>
 <part name="+3V28" library="backplane" deviceset="+3V3" device=""/>
-<part name="R16" library="clock" deviceset="RESISTOR" device="0805-RES"/>
+<part name="R16" library="clock" deviceset="RESISTOR" device="0805-RES" value="4K7"/>
 <part name="+3V29" library="backplane" deviceset="+3V3" device=""/>
 <part name="S4" library="bus" deviceset="SWITCH-MOMENTARY-2" device="SIDE_EZ"/>
 <part name="S5" library="bus" deviceset="SWITCH-MOMENTARY-2" device="SIDE_EZ"/>
@@ -10009,17 +9998,17 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="TP1" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="PTR1" device="TP20R"/>
 <part name="JP4" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-2X2" device=""/>
 <part name="GND41" library="backplane" deviceset="GND" device=""/>
-<part name="R17" library="clock" deviceset="RESISTOR" device="0805-RES"/>
-<part name="R9" library="clock" deviceset="RESISTOR" device="0805-RES"/>
+<part name="R17" library="clock" deviceset="RESISTOR" device="0805-RES" value="4K7"/>
+<part name="R9" library="clock" deviceset="RESISTOR" device="0805-RES" value="4K7"/>
 <part name="U$20" library="a" deviceset="M3_MOUNTING_HOLE" device=""/>
 <part name="SD1" library="basicBoard" deviceset="TF-HOLDER" device=""/>
 <part name="GND47" library="backplane" deviceset="GND" device=""/>
 <part name="+3V30" library="backplane" deviceset="+3V3" device=""/>
 <part name="+3V31" library="backplane" deviceset="+3V3" device=""/>
-<part name="C1" library="clock" deviceset="CAP" device="0805"/>
+<part name="C1" library="clock" deviceset="CAP" device="0805" value="100nF"/>
 <part name="GND7" library="backplane" deviceset="GND" device=""/>
 <part name="+3V32" library="backplane" deviceset="+3V3" device=""/>
-<part name="C3" library="clock" deviceset="CAP" device="0805"/>
+<part name="C3" library="clock" deviceset="CAP" device="0805" value="20pF"/>
 <part name="GND8" library="backplane" deviceset="GND" device=""/>
 <part name="U1" library="SparkFun-Sensors" deviceset="DS18B20" device=""/>
 <part name="TP2" library="SparkFun-Passives" deviceset="TEST-POINT" device="3X5" value="TEST-POINT3X5"/>
@@ -10108,18 +10097,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <instance part="U$13" gate="G$1" x="-43.18" y="-190.5"/>
 <instance part="JP1" gate="A" x="68.58" y="-261.62"/>
 <instance part="JP2" gate="A" x="38.1" y="-261.62"/>
-<instance part="C4" gate="G$1" x="264.16" y="15.24"/>
-<instance part="+3V17" gate="G$1" x="264.16" y="25.4" rot="MR0"/>
-<instance part="GND29" gate="1" x="264.16" y="5.08"/>
-<instance part="C5" gate="G$1" x="274.32" y="15.24"/>
-<instance part="+3V18" gate="G$1" x="274.32" y="25.4" rot="MR0"/>
-<instance part="GND30" gate="1" x="274.32" y="5.08"/>
-<instance part="C9" gate="G$1" x="284.48" y="15.24"/>
-<instance part="+3V19" gate="G$1" x="284.48" y="25.4" rot="MR0"/>
-<instance part="GND31" gate="1" x="284.48" y="5.08"/>
-<instance part="C10" gate="G$1" x="294.64" y="15.24"/>
-<instance part="+3V20" gate="G$1" x="294.64" y="25.4" rot="MR0"/>
-<instance part="GND32" gate="1" x="294.64" y="5.08"/>
 <instance part="C13" gate="G$1" x="304.8" y="15.24"/>
 <instance part="+3V21" gate="G$1" x="304.8" y="25.4" rot="MR0"/>
 <instance part="GND33" gate="1" x="304.8" y="5.08"/>
@@ -10309,26 +10286,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pinref part="C2" gate="G$1" pin="2"/>
 <pinref part="GND10" gate="1" pin="GND"/>
 <wire x1="254" y1="7.62" x2="254" y2="10.16" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="C4" gate="G$1" pin="2"/>
-<pinref part="GND29" gate="1" pin="GND"/>
-<wire x1="264.16" y1="7.62" x2="264.16" y2="10.16" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="C5" gate="G$1" pin="2"/>
-<pinref part="GND30" gate="1" pin="GND"/>
-<wire x1="274.32" y1="7.62" x2="274.32" y2="10.16" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="C9" gate="G$1" pin="2"/>
-<pinref part="GND31" gate="1" pin="GND"/>
-<wire x1="284.48" y1="7.62" x2="284.48" y2="10.16" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="C10" gate="G$1" pin="2"/>
-<pinref part="GND32" gate="1" pin="GND"/>
-<wire x1="294.64" y1="7.62" x2="294.64" y2="10.16" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C13" gate="G$1" pin="2"/>
@@ -10556,26 +10513,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pinref part="C2" gate="G$1" pin="1"/>
 <pinref part="+3V3" gate="G$1" pin="+3V3"/>
 <wire x1="254" y1="22.86" x2="254" y2="17.78" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="C4" gate="G$1" pin="1"/>
-<pinref part="+3V17" gate="G$1" pin="+3V3"/>
-<wire x1="264.16" y1="22.86" x2="264.16" y2="17.78" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="C5" gate="G$1" pin="1"/>
-<pinref part="+3V18" gate="G$1" pin="+3V3"/>
-<wire x1="274.32" y1="22.86" x2="274.32" y2="17.78" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="C9" gate="G$1" pin="1"/>
-<pinref part="+3V19" gate="G$1" pin="+3V3"/>
-<wire x1="284.48" y1="22.86" x2="284.48" y2="17.78" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="C10" gate="G$1" pin="1"/>
-<pinref part="+3V20" gate="G$1" pin="+3V3"/>
-<wire x1="294.64" y1="22.86" x2="294.64" y2="17.78" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C13" gate="G$1" pin="1"/>
@@ -11386,7 +11323,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </drawing>
 <compatibility>
 <note version="8.2" severity="warning">
-Since Version 8.2, Eagle supports online libraries. The ids
+Since Version 8.2, EAGLE supports online libraries. The ids
 of those online libraries will not be understood (or retained)
 with this version.
 </note>
