@@ -23,7 +23,6 @@ exixe clock makes use of the [exixe modules](https://github.com/dekuNukem/exixe)
 * Uses [exixe modules](https://github.com/dekuNukem/exixe)
 * Works with both IN-12 and IN-14 tubes
 * Single 5V supply from USB
-* Off-the-shelf high voltage supply module
 * 350mA average consumption
 
 ### Versatile interfaces
@@ -33,16 +32,16 @@ exixe clock makes use of the [exixe modules](https://github.com/dekuNukem/exixe)
 * Temperature sensor
 * Light sensor
 * UART extension header
-* GNSS extension header
+* GNSS debug header
 * 2 capacitive touch buttons
 * 2 physical buttons
-* Fix indicator LED
+* GNSS fix indicator LED
 
 ## User guide
 
 ### Setting time
 
-Connect a GPS antenna and place it under clear sky, time will be automatically set and saved when a GPS fix is obtained. You might have to wait 2 or 3 minutes, but it's usually faster.
+Install a CR1220 coin batterry in the holder, connect a GPS antenna and place it under clear sky, time will be automatically set and saved when a GPS fix is obtained. You might have to wait 2 or 3 minutes, but it's usually much faster.
 
 ### Setting timezone
 
@@ -65,6 +64,10 @@ Press either A or B button during normal operation to switch the display to temp
 * High voltage module is [this one](https://www.ebay.co.uk/itm/DC-5V-12V-to-170V-DC-High-Voltage-NIXIE-Power-Supply-Module-PSU-NIXIE-TUBE-ERA/322511957768?hash=item4b1735ef08:g:ftQAAOSwYTVZmjZb)
 * There are two headers for the HV module, use the one that has the correct pinout
 * Undefine `USE_EXIXE_14` at the beginning of [my_tasks.c](firmware/Src/my_tasks.c) to use IN-12 tubes.
+
+## Extensions and hacks
+
+UART header, GPS header, light sensor, touchpad etc
 
 ## Rants about conventional Nixie clocks
 
