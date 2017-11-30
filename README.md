@@ -10,6 +10,12 @@ With GPS fix acquired, displayed time would be within 60 **nanoseconds** of the 
 
 exixe clock makes use of the [exixe modules](https://github.com/dekuNukem/exixe), and works with both IN-14 and IN-12 tubes. It also comes with a wealth of sensors and interfaces on-board, allowing it to be hacked beyond just a timepiece.
 
+## Video
+
+Here's a short video of exixe clock in action with [exixe14 modules](https://github.com/dekuNukem/exixe) :
+
+https://www.youtube.com/watch?v=r3d2alzgjKc
+
 ## Features
 
 ### Precision Timing
@@ -38,12 +44,6 @@ exixe clock makes use of the [exixe modules](https://github.com/dekuNukem/exixe)
 * 2 capacitive touch buttons
 * 2 physical buttons
 * GNSS fix indicator LED
-
-## Video
-
-Here's a short video of exixe clock in action:
-
-https://www.youtube.com/watch?v=r3d2alzgjKc
 
 ## Rants about conventional Nixie clocks
 
