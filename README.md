@@ -39,6 +39,12 @@ exixe clock makes use of the [exixe modules](https://github.com/dekuNukem/exixe)
 * 2 physical buttons
 * GNSS fix indicator LED
 
+## Video
+
+Here's a short video of exixe clock in action:
+
+https://www.youtube.com/watch?v=r3d2alzgjKc
+
 ## Rants about conventional Nixie clocks
 
 I was looking through existing Nixie clock projects before starting my own, and I'm rather unconvinced with some trends that many have in common:
