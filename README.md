@@ -1,6 +1,6 @@
 # exixe clock: nanosecond-precision GPS-disciplined Nixie tube clock
 
-![Alt text](https://i.imgur.com/I1maqhw.jpg)
+![Alt text](resources/pics/clocks.jpg)
 
 ![Alt text](resources/pics/utc.jpg)
 
@@ -13,7 +13,7 @@ exixe clock makes use of the [exixe modules](https://github.com/dekuNukem/exixe)
 ### Precision Timing
 
 * 60ns with GPS fix
-* 2 seconds per month drift without GPS fix
+* less than 1 second per month drift without GPS fix
 * Auto time acquisition
 * Battery backup
 * Customizable timezone
@@ -134,6 +134,8 @@ The temperature sensor DS18B20 has a lot of fakes on the internet, if it's too c
 DO NOT solder the GPS module by hand, it would result in terrible reliability where the GPS module would randomly stop working. Always use paste and reflow.
 
 The PCB works with both exixe12 and exixe14 modules, the only different component is the SMA antenna connector. On clock using exixe14 modules, the right-angle SMA connector is used, while on clock using exixe12 module, a straight SMA connector is used instead. This allows the SMA receptacle point to the back of the clock in both cases.
+
+![Alt text](resources/pics/sma.jpg)
 
 Front and back plate are need with exixe12 clock to support the PCB inbetween, they are just regular laser cut clear acrylic plates, your local hackerspace should have a laser cutter. The plate files are in the `resources` folder.
 
