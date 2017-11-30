@@ -65,13 +65,11 @@ Let's not forget Nixie clock is first and foremost a clock, and it's useless if 
 
 In the end, I decided to keep the design as modular and as simple as possible. As a result, I designed the exixe driver modules first, then the clock itself later. 
 
-You can read more about the [exixe modules here](https://github.com/dekuNukem/exixe), but in short, exixe is a tiny and inexpensive Nixie tube driver with hardware PWM on all digits and RGB backlight. Each module controls one tube, and uses SPI for communication.
+You can read more about the [exixe modules here](https://github.com/dekuNukem/exixe), but in short, they are tiny and inexpensive Nixie tube drivers with hardware PWM on all digits and RGB backlight. Each module controls one tube, and uses SPI for communication.
 
 Now that each tube has its own driver, multiplexing is no longer needed, and routing is down to only 3 SPI lines, and each tube can be replaced and repurposed simply by unplugging the module.
 
-Next up is timing, instead of manually setting time and using built-in RTC, I decided to use GPS-based timekeeping. There are atomic clocks onboard each GPS satellites, and the precise UTC time can be calculated as part of the position fix. This way time can be automatically set and kept within 60ns of GPS time with position fix. And if antenna is disconnected, drift seems to be than 1 second per month from the observation of the one I made myself. And a coin battery keeps time even when the clock itself is turned off.
-
-Each digit update is triggered by the timepulse signal from the GNSS receiver, synced to the UTC.
+Next up is timing, instead of manually setting time and using built-in RTC, I decided to use GPS-based timekeeping. There are atomic clocks onboard each GPS satellites, and the precise UTC time can be calculated as part of the position fix. This way time can be automatically set and kept within 60ns of GPS time with position fix. Each digit update is triggered by the timepulse signal from the GNSS receiver, synced to the precise transition of each UTC second. And if antenna is disconnected, drift seems to be than 1 second per month from the observation of the one I made myself. A coin battery keeps time even when the clock itself is turned off.
 
 A bunch of extra features was thrown in during the design process as well. I added a temperature sensor so the tubes can optionally display hour:minute:temp instead of hour:minute:second, a blue LED lights up when GPS fix is acquired, 2 capacitive touchpad was added for buttonless controls, a light sensor was added for automatic brightness adjustment, SD card slot was added for data logging, and UART header was added for debugging and expansion.
 
