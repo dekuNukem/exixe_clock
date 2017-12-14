@@ -561,22 +561,6 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
-{
-  // HAL_GPIO_TogglePin(USER_LED_GPIO_Port, USER_LED_Pin);
-  if(huart->Instance==USART1)
-  {
-      linear_buf_add(&gps_lb, gps_byte_buf[0]);
-      HAL_UART_Receive_IT(&huart1, gps_byte_buf, 1);
-  }
-}
-
-void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
-{
-  if(huart->Instance==USART1)
-      HAL_UART_Receive_IT(&huart1, gps_byte_buf, 1);
-}
-
 /* USER CODE END 4 */
 
 /* StartDefaultTask function */

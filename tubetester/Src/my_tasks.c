@@ -16,48 +16,21 @@
 #include "config.h"
 #include "buttons.h"
 
-// comment this out to use IN-12 tubes
-#define USE_EXIXE_14
-
-#ifdef USE_EXIXE_14
-#define TUBE1 0
-#define TUBE2 1
-#define TUBE3 2
-#define TUBE4 3
-#define TUBE5 4
-#define TUBE6 5
-#else
 #define TUBE1 5
 #define TUBE2 4
 #define TUBE3 3
 #define TUBE4 2
 #define TUBE5 1
 #define TUBE6 0
-#endif
 
 uint8_t spi_buf[SPI_CMD_SIZE];
-uint8_t gps_byte_buf[1];
 uint32_t frame_counter;
-int16_t raw_temp;
-int32_t current_time;
-uint8_t year, month, day, hour, minute, second;
-uint8_t display_mode, is_in_setup_mode, use_24hour;
-int8_t utc_offset;
 digit_animation tube_animation[TUBE_COUNT];
 led_animation rgb_animation[TUBE_COUNT];
-linear_buf gps_lb;
 my_button up_button, down_button;
-uint8_t rgb_orange[LED_CHANNEL_SIZE] = {255, 55, 0};
-uint8_t rgb_purple[LED_CHANNEL_SIZE] = {255, 0, 255};
 uint8_t rgb_red[LED_CHANNEL_SIZE] = {255, 0, 0};
 uint8_t rgb_green[LED_CHANNEL_SIZE] = {0, 255, 0};
 uint8_t rgb_blue[LED_CHANNEL_SIZE] = {0, 0, 255};
-struct minmea_sentence_rmc gps_rmc;
-struct minmea_sentence_gga gps_gga;
-struct minmea_sentence_gsa gps_gsa;
-struct minmea_sentence_gll gps_gll;
-struct minmea_sentence_gst gps_gst;
-struct minmea_sentence_gsv gps_gsv;
 
 void spi_send(uint8_t* data, uint8_t size, uint8_t index)
 {
@@ -117,7 +90,7 @@ void setup_task(void)
   for (int i = 0; i < TUBE_COUNT; ++i)
     led_animation_init(&(rgb_animation[i]));
   for (int i = 0; i < TUBE_COUNT; ++i)
-    led_start_animation(&(rgb_animation[i]), rgb_orange, ANIMATION_CROSS_FADE);
+    led_start_animation(&(rgb_animation[i]), rgb_red, ANIMATION_CROSS_FADE);
   button_init(&up_button, HAL_GPIO_ReadPin(UP_BUTTON_GPIO_Port, UP_BUTTON_Pin));
   button_init(&down_button, HAL_GPIO_ReadPin(DOWN_BUTTON_GPIO_Port, DOWN_BUTTON_Pin));
 }
