@@ -1,0 +1,7 @@
+switched to USB Type-C connector
+readjusted input and output cap for 1117 regulator
+new universal program header
+smaller and relocated DFU and reset button
+removed SPI series resistor
+adjusted bypass cap layout
+removed light sensor
