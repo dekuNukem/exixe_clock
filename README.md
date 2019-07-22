@@ -67,13 +67,11 @@ Press either A or B button during normal operation to switch the display to temp
 
 There are some extra components that's worth mentioning if you want to further develop upon this project.
 
-* A UART header is situated to the left of the USB port, you can use it for communication or as 2 extra GPIOs for extensions. 
+* A debug header is situated to the right of the USB port, you can use it for communication or extra GPIOs.
 
 * The GPS header beside the antenna connector breaks out the TX, RX and timepulse of the GPS module, it's mainly for debugging purposes.
 
-* There is a light sensor for automatic brightness adjustment. However found it annoying after implementing that feature so it's not used right now. Therefore you don't need to solder on a light sensor at all, but it's there if you need it.
-
-* 2 capacitive touchpad buttons are available, they are designed according to the ST reference doc and connected to TSC channels of the STM32, I haven't found a use for them yet though.
+* There are 2 capacitive touchpad buttons, they are designed according to the ST reference doc and connected to TSC channels of the STM32, I haven't found a use for them yet though.
 
 * A DFU button is available, hold it down while plugging the clock into a computer puts the STM32 into USB DFU mode, so you can upload firmware through USB without needing a programmer.
 
