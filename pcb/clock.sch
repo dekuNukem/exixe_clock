@@ -9927,11 +9927,11 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="U$14" library="touch_pad" deviceset="TOUCHPAD" device=""/>
 <part name="U$15" library="touch_pad" deviceset="TOUCHPAD" device=""/>
 <part name="GND42" library="backplane" deviceset="GND" device=""/>
-<part name="C18" library="clock" deviceset="CAP" device="0805"/>
+<part name="C18" library="clock" deviceset="CAP" device="0805" value="47nF"/>
 <part name="GND43" library="backplane" deviceset="GND" device=""/>
-<part name="R11" library="clock" deviceset="RESISTOR" device="0805-RES" value="10"/>
-<part name="R12" library="clock" deviceset="RESISTOR" device="0805-RES" value="10"/>
-<part name="C19" library="clock" deviceset="CAP" device="0805"/>
+<part name="R11" library="clock" deviceset="RESISTOR" device="0805-RES" value="1K"/>
+<part name="R12" library="clock" deviceset="RESISTOR" device="0805-RES" value="1K"/>
+<part name="C19" library="clock" deviceset="CAP" device="0805" value="47nF"/>
 <part name="GND44" library="backplane" deviceset="GND" device=""/>
 <part name="L1" library="basicBoard" deviceset="INDUCTOR" device="0805" value="33nH"/>
 <part name="C17" library="clock" deviceset="CAP" device="0805" value="20pF"/>

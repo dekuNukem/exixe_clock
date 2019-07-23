@@ -203,8 +203,8 @@
 <text x="74.2442" y="1.7272" size="1.27" layer="25" rot="R180">G</text>
 <text x="79.756" y="5.588" size="1.27" layer="25">DIO</text>
 <text x="85.471" y="1.778" size="1.27" layer="25" rot="R180">CLK</text>
-<text x="71.3486" y="1.8034" size="1.27" layer="25" rot="R180">RESET</text>
-<text x="58.5724" y="1.8034" size="1.27" layer="25" rot="R180">DFU</text>
+<text x="70.2564" y="1.905" size="1.27" layer="25" rot="R180">DFU</text>
+<text x="59.9694" y="1.905" size="1.27" layer="25" rot="R180">RESET</text>
 <text x="100.711" y="2.667" size="1.27" layer="25" rot="R180">G</text>
 <text x="101.346" y="6.477" size="1.27" layer="25">RX</text>
 <text x="103.886" y="6.477" size="1.27" layer="25">TX</text>
@@ -1465,16 +1465,16 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 </element>
 <element name="U$14" library="touch_pad" package="TOUCHPAD_PAK" value="TOUCHPAD" x="4" y="35" smashed="yes"/>
 <element name="U$15" library="touch_pad" package="TOUCHPAD_PAK" value="TOUCHPAD" x="4" y="20" smashed="yes"/>
-<element name="C18" library="clock" package="0805" value="" x="41.148" y="29.845" smashed="yes">
+<element name="C18" library="clock" package="0805" value="47nF" x="41.148" y="29.845" smashed="yes">
 <attribute name="NAME" x="39.37" y="30.1625" size="0.8128" layer="25" rot="R180"/>
 </element>
-<element name="R11" library="clock" package="0805" value="10" x="41.148" y="31.623" smashed="yes" rot="R180">
+<element name="R11" library="clock" package="0805" value="1K" x="41.148" y="31.623" smashed="yes" rot="R180">
 <attribute name="NAME" x="39.4208" y="31.9913" size="0.8128" layer="25" rot="R180"/>
 </element>
-<element name="R12" library="clock" package="0805" value="10" x="41.148" y="33.401" smashed="yes" rot="R180">
+<element name="R12" library="clock" package="0805" value="1K" x="41.148" y="33.401" smashed="yes" rot="R180">
 <attribute name="NAME" x="39.4462" y="33.7693" size="0.8128" layer="25" rot="R180"/>
 </element>
-<element name="C19" library="clock" package="0805" value="" x="45.593" y="33.2994" smashed="yes" rot="R270">
+<element name="C19" library="clock" package="0805" value="47nF" x="45.593" y="33.2994" smashed="yes" rot="R270">
 <attribute name="NAME" x="44.8945" y="31.6484" size="0.8128" layer="25" rot="R270"/>
 </element>
 <element name="L1" library="basicBoard" package="0805" value="33nH" x="95.377" y="15.621" smashed="yes">
