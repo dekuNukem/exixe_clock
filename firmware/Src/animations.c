@@ -101,6 +101,7 @@ void tube_print2(int8_t value, digit_animation* msa, digit_animation* lsa, uint8
   }
   start_animation(lsa, value % 10, type);
   start_animation(msa, (value / 10) % 10, type);
+  printf("tp2: %d\n", value);
 }
 
 void animation_handler(digit_animation* anime_struct)

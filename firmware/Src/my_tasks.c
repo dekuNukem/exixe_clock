@@ -204,45 +204,49 @@ void test_task_start(void const * argument)
   }
 }
 
+// 1PPS interrupt
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
   if(is_in_setup_mode)
     return;
-  if(GPIO_Pin == GPS_TP_Pin)
-  {
-    if(gps_rmc.valid)
-      HAL_GPIO_WritePin(USER_LED_GPIO_Port, USER_LED_Pin, GPIO_PIN_RESET);
-    else
-      HAL_GPIO_WritePin(USER_LED_GPIO_Port, USER_LED_Pin, GPIO_PIN_SET);
+  if(GPIO_Pin != GPS_TP_Pin)
+    return;
 
-    if(gps_rmc.date.year >= 17 && rtc_gps_calib(&gps_rmc) == 0)
-        current_time = get_time_rmc(&gps_rmc);
+  if(gps_rmc.date.year >= 17)
+    HAL_GPIO_WritePin(USER_LED_GPIO_Port, USER_LED_Pin, GPIO_PIN_RESET);
+  else
+    HAL_GPIO_WritePin(USER_LED_GPIO_Port, USER_LED_Pin, GPIO_PIN_SET);
+  
+  rtc_gps_calib(&gps_rmc);
+  if(gps_rmc.date.year >= 17)
+    current_time = get_time_rmc(&gps_rmc);
+  else
     current_time++;
-    unix_ts_2_datetime(current_time + 3600 * utc_offset, &year, &month, &day, &hour, &minute, &second);
-    if(use_24hour == 0 && hour > 12)
-      hour -= 12;
+  unix_ts_2_datetime(current_time + 3600 * utc_offset, &year, &month, &day, &hour, &minute, &second);
+  if(use_24hour == 0 && hour > 12)
+    hour -= 12;
 
-    // tube display
-    tube_print2(hour, &(tube_animation[5]), &(tube_animation[4]), ANIMATION_CROSS_FADE);
-    tube_print2(minute, &(tube_animation[3]), &(tube_animation[2]), ANIMATION_CROSS_FADE);
-    if(display_mode == DISPLAY_MODE_TIME_ONLY)
-      tube_print2(second, &(tube_animation[1]), &(tube_animation[0]), ANIMATION_CROSS_FADE);
-    else
-      tube_print2(raw_temp, &(tube_animation[1]), &(tube_animation[0]), ANIMATION_CROSS_FADE);
+  // tube display
+  tube_print2(hour, &(tube_animation[5]), &(tube_animation[4]), ANIMATION_CROSS_FADE);
+  tube_print2(minute, &(tube_animation[3]), &(tube_animation[2]), ANIMATION_CROSS_FADE);
+  if(display_mode == DISPLAY_MODE_TIME_ONLY)
+    tube_print2(second, &(tube_animation[1]), &(tube_animation[0]), ANIMATION_CROSS_FADE);
+  else
+    tube_print2(raw_temp, &(tube_animation[1]), &(tube_animation[0]), ANIMATION_CROSS_FADE);
     
-    // led display
-    if(display_mode == DISPLAY_MODE_TIME_TEMP)
-    {
-      for (int i = 0; i < 2; ++i)
-        led_start_animation(&(rgb_animation[i]), rgb_purple, ANIMATION_CROSS_FADE);
-      for (int i = 2; i < TUBE_COUNT; ++i)
-        led_start_animation(&(rgb_animation[i]), rgb_orange, ANIMATION_BREATHING);
-    }
-    else
-    {
-      for (int i = 0; i < TUBE_COUNT; ++i)
-        led_start_animation(&(rgb_animation[i]), rgb_orange, ANIMATION_CROSS_FADE);
-    }
+  printf("----\n");
+  // led display
+  if(display_mode == DISPLAY_MODE_TIME_TEMP)
+  {
+    for (int i = 0; i < 2; ++i)
+      led_start_animation(&(rgb_animation[i]), rgb_purple, ANIMATION_CROSS_FADE);
+    for (int i = 2; i < TUBE_COUNT; ++i)
+      led_start_animation(&(rgb_animation[i]), rgb_orange, ANIMATION_BREATHING);
+  }
+  else
+  {
+    for (int i = 0; i < TUBE_COUNT; ++i)
+      led_start_animation(&(rgb_animation[i]), rgb_orange, ANIMATION_CROSS_FADE);
   }
 }
 
@@ -254,6 +258,7 @@ void gps_temp_parse_task_start(void const * argument)
     HAL_IWDG_Refresh(iwdg_ptr);
     if(linear_buf_line_available(&gps_lb))
     {
+      printf("gps: %s\n", gps_lb.buf);
       parse_gps((char*)gps_lb.buf, &gps_rmc, &gps_gga, &gps_gsa, &gps_gll, &gps_gst, &gps_gsv);
       linear_buf_reset(&gps_lb);
     }
