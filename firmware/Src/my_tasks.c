@@ -243,7 +243,7 @@ uint8_t write_log(char* msg)
 }
 
 uint8_t sd_error_count;
-
+uint8_t counter;
 // 1PPS interrupt
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
@@ -273,7 +273,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
     tube_print2(second, &(tube_animation[1]), &(tube_animation[0]), ANIMATION_CROSS_FADE);
   else
     tube_print2(raw_temp, &(tube_animation[1]), &(tube_animation[0]), ANIMATION_CROSS_FADE);
-  printf("----\n");
+  // printf("----\n");
   // led display
   if(display_mode == DISPLAY_MODE_TIME_TEMP)
   {
@@ -288,12 +288,15 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
       led_start_animation(&(rgb_animation[i]), rgb_orange, ANIMATION_CROSS_FADE);
   }
 
+  counter++;
+  if(counter % 60)
+    return;
   replace_nlcr_with_space(last_rmc, GPS_BUF_SIZE);
   memset(sd_write_buf, 0, SD_WRITE_BUF_SIZE);
   sprintf(sd_write_buf, "{\"temp\": %d, \"date\": \"20%02d-%02d-%02d\", \"time\": \"%02d:%02d:%02d\", \"utc_offset\": %d, \"last_rmc\": \"%s\"}\n",
        raw_temp, year, month, day, hour, minute, second, utc_offset, last_rmc);
-  printf("%s", sd_write_buf);
-  // sd_error_count += write_log(sd_write_buf);
+  // printf("%s", sd_write_buf);
+  sd_error_count += write_log(sd_write_buf);
   printf("sd: %d\n", sd_error_count);
 }
 
@@ -313,7 +316,7 @@ void gps_temp_parse_task_start(void const * argument)
   uint8_t loop_count = 0;
   for(;;)
   {
-    if(sd_error_count > 100)
+    if(sd_error_count > 10)
       my_halt();
 
     HAL_IWDG_Refresh(iwdg_ptr);
