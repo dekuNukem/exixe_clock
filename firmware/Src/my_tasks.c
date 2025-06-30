@@ -219,6 +219,31 @@ void test_task_start(void const * argument)
   }
 }
 
+void replace_nlcr_with_space(char *str, size_t size)
+{
+  for (size_t i = 0; i < size; ++i)
+    if (str[i] == '\n' || str[i] == '\r')
+      str[i] = ' ';
+}
+
+const char log_file_path[] = "log.txt";
+
+uint8_t write_log(char* msg)
+{
+  uint32_t bytes_written = 0;
+  uint32_t msg_size = strlen(msg);
+  if(f_open(&sd_file, log_file_path, 	FA_OPEN_ALWAYS | FA_WRITE))
+    return 2;
+  if(f_lseek(&sd_file, f_size(&sd_file)))
+    return 3;
+  if(f_write(&sd_file, msg, msg_size, &bytes_written))
+    return 4;
+  f_close(&sd_file);
+  return 0;
+}
+
+uint8_t sd_error_count;
+
 // 1PPS interrupt
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
@@ -263,9 +288,24 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
       led_start_animation(&(rgb_animation[i]), rgb_orange, ANIMATION_CROSS_FADE);
   }
 
-  // printf("%d %02d%02d%02d %02d%02d%02d %d %s\n", raw_temp, year, month, day, hour, minute, second, utc_offset, last_rmc);
-  printf("{\"temp\": %d, \"date\": \"20%02d-%02d-%02d\", \"time\": \"%02d:%02d:%02d\", \"utc_offset\": %d, \"last_rmc\": \"%s\"}\n",
+  replace_nlcr_with_space(last_rmc, GPS_BUF_SIZE);
+  memset(sd_write_buf, 0, SD_WRITE_BUF_SIZE);
+  sprintf(sd_write_buf, "{\"temp\": %d, \"date\": \"20%02d-%02d-%02d\", \"time\": \"%02d:%02d:%02d\", \"utc_offset\": %d, \"last_rmc\": \"%s\"}\n",
        raw_temp, year, month, day, hour, minute, second, utc_offset, last_rmc);
+  printf("%s", sd_write_buf);
+  // sd_error_count += write_log(sd_write_buf);
+  printf("sd: %d\n", sd_error_count);
+}
+
+void my_halt(void)
+{
+  HAL_NVIC_DisableIRQ(EXTI4_15_IRQn);
+  while(1)
+  {
+    HAL_GPIO_TogglePin(USER_LED_GPIO_Port, USER_LED_Pin);
+    osDelay(100);
+    HAL_IWDG_Refresh(iwdg_ptr);
+  }
 }
 
 void gps_temp_parse_task_start(void const * argument)
@@ -273,6 +313,9 @@ void gps_temp_parse_task_start(void const * argument)
   uint8_t loop_count = 0;
   for(;;)
   {
+    if(sd_error_count > 100)
+      my_halt();
+
     HAL_IWDG_Refresh(iwdg_ptr);
     if(linear_buf_line_available(&gps_lb))
     {
