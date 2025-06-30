@@ -5,7 +5,6 @@ clock_test\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.
 clock_test\tasks.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 clock_test\tasks.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 clock_test\tasks.o: ../Inc/FreeRTOSConfig.h
-clock_test\tasks.o: ../Inc/main.h
 clock_test\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 clock_test\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
 clock_test\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
@@ -14,4 +13,4 @@ clock_test\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrapp
 clock_test\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
 clock_test\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
 clock_test\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
-clock_test\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/StackMacros.h
+clock_test\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/stack_macros.h

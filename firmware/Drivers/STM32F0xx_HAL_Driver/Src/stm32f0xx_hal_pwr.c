@@ -8,33 +8,15 @@
   *           + Initialization/de-initialization function
   *           + Peripheral Control function
   *
-  @verbatim
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT(c) 2016 STMicroelectronics</center></h2>
+  * Copyright (c) 2016 STMicroelectronics.
+  * All rights reserved.
   *
-  * Redistribution and use in source and binary forms, with or without modification,
-  * are permitted provided that the following conditions are met:
-  *   1. Redistributions of source code must retain the above copyright notice,
-  *      this list of conditions and the following disclaimer.
-  *   2. Redistributions in binary form must reproduce the above copyright notice,
-  *      this list of conditions and the following disclaimer in the documentation
-  *      and/or other materials provided with the distribution.
-  *   3. Neither the name of STMicroelectronics nor the names of its contributors
-  *      may be used to endorse or promote products derived from this software
-  *      without specific prior written permission.
-  *
-  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-  * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-  * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
@@ -239,7 +221,7 @@ void HAL_PWR_DisableBkUpAccess(void)
 
 /**
   * @brief Enables the WakeUp PINx functionality.
-  * @param WakeUpPinx: Specifies the Power Wake-Up pin to enable.
+  * @param WakeUpPinx Specifies the Power Wake-Up pin to enable.
   *         This parameter can be value of :
   *           @ref PWREx_WakeUp_Pins
   * @retval None
@@ -254,7 +236,7 @@ void HAL_PWR_EnableWakeUpPin(uint32_t WakeUpPinx)
 
 /**
   * @brief Disables the WakeUp PINx functionality.
-  * @param WakeUpPinx: Specifies the Power Wake-Up pin to disable.
+  * @param WakeUpPinx Specifies the Power Wake-Up pin to disable.
   *         This parameter can be values of :
   *           @ref PWREx_WakeUp_Pins
   * @retval None
@@ -270,11 +252,11 @@ void HAL_PWR_DisableWakeUpPin(uint32_t WakeUpPinx)
 /**
   * @brief Enters Sleep mode.
   * @note  In Sleep mode, all I/O pins keep the same state as in Run mode.
-  * @param Regulator: Specifies the regulator state in SLEEP mode.
+  * @param Regulator Specifies the regulator state in SLEEP mode.
   *           On STM32F0 devices, this parameter is a dummy value and it is ignored
   *           as regulator can't be modified in this mode. Parameter is kept for platform
   *           compatibility.
-  * @param SLEEPEntry: Specifies if SLEEP mode is entered with WFI or WFE instruction.
+  * @param SLEEPEntry Specifies if SLEEP mode is entered with WFI or WFE instruction.
   *           When WFI entry is used, tick interrupt have to be disabled if not desired as 
   *           the interrupt wake up source.
   *           This parameter can be one of the following values:
@@ -315,11 +297,11 @@ void HAL_PWR_EnterSLEEPMode(uint32_t Regulator, uint8_t SLEEPEntry)
   *         startup delay is incurred when waking up from Stop mode.
   *         By keeping the internal regulator ON during Stop mode, the consumption
   *         is higher although the startup time is reduced.
-  * @param Regulator: Specifies the regulator state in STOP mode.
+  * @param Regulator Specifies the regulator state in STOP mode.
   *          This parameter can be one of the following values:
   *            @arg PWR_MAINREGULATOR_ON: STOP mode with regulator ON
   *            @arg PWR_LOWPOWERREGULATOR_ON: STOP mode with low power regulator ON
-  * @param STOPEntry: specifies if STOP mode in entered with WFI or WFE instruction.
+  * @param STOPEntry specifies if STOP mode in entered with WFI or WFE instruction.
   *          This parameter can be one of the following values:
   *            @arg PWR_STOPENTRY_WFI:Enter STOP mode with WFI instruction
   *            @arg PWR_STOPENTRY_WFE: Enter STOP mode with WFE instruction
@@ -466,5 +448,3 @@ void HAL_PWR_DisableSEVOnPend(void)
 /**
   * @}
   */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

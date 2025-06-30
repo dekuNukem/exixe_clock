@@ -4,7 +4,6 @@
 #include "shared.h"
 #include "my_tasks.h"
 #include "main.h"
-#include "my_usb.h"
 #include "helpers.h"
 #include "animations.h"
 #include "delay_us.h"

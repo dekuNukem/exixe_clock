@@ -5,7 +5,6 @@ clock_test\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.
 clock_test\queue.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 clock_test\queue.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 clock_test\queue.o: ../Inc/FreeRTOSConfig.h
-clock_test\queue.o: ../Inc/main.h
 clock_test\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 clock_test\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
 clock_test\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h

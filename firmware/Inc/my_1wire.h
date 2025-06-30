@@ -6,6 +6,7 @@
 #endif 
 
 #include "stm32f0xx_hal.h"
+#include "main.h"
 
 uint8_t my_1wire_reset(void);
 void my_1wire_write_byte(uint8_t v);

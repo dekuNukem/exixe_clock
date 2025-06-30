@@ -4,7 +4,6 @@ clock_test\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS
 clock_test\timers.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 clock_test\timers.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 clock_test\timers.o: ../Inc/FreeRTOSConfig.h
-clock_test\timers.o: ../Inc/main.h
 clock_test\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 clock_test\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
 clock_test\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
