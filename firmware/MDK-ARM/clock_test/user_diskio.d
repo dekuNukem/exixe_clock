@@ -55,3 +55,6 @@ clock_test\user_diskio.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/tim
 clock_test\user_diskio.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
 clock_test\user_diskio.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 clock_test\user_diskio.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
+clock_test\user_diskio.o: ../Inc/sd_util.h
+clock_test\user_diskio.o: ../Inc/shared.h
+clock_test\user_diskio.o: ../Inc/user_diskio.h

@@ -68,3 +68,4 @@ clock_test\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 clock_test\main.o: ../Inc/my_tasks.h
 clock_test\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 clock_test\main.o: ../Inc/delay_us.h
+clock_test\main.o: ../Inc/sd_util.h

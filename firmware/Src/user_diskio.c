@@ -6,7 +6,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2025 STMicroelectronics.
+  * Copyright (c) 2024 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -35,6 +35,10 @@
 /* Includes ------------------------------------------------------------------*/
 #include <string.h>
 #include "ff_gen_drv.h"
+#include "sd_util.h"
+#include "user_diskio.h"
+
+hwif hw;
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -77,10 +81,12 @@ Diskio_drvTypeDef  USER_Driver =
   * @retval DSTATUS: Operation status
   */
 DSTATUS USER_initialize (
-	BYTE pdrv           /* Physical drive nmuber to identify the drive */
+  BYTE pdrv           /* Physical drive nmuber to identify the drive */
 )
 {
   /* USER CODE BEGIN INIT */
+    if (hwif_init(&hw) == 0)
+      return 0;
     Stat = STA_NOINIT;
     return Stat;
   /* USER CODE END INIT */
@@ -92,12 +98,14 @@ DSTATUS USER_initialize (
   * @retval DSTATUS: Operation status
   */
 DSTATUS USER_status (
-	BYTE pdrv       /* Physical drive number to identify the drive */
+  BYTE pdrv       /* Physical drive number to identify the drive */
 )
 {
   /* USER CODE BEGIN STATUS */
-    Stat = STA_NOINIT;
-    return Stat;
+  if(hw.initialized)
+    return 0;
+  Stat = STA_NOINIT;
+  return Stat;
   /* USER CODE END STATUS */
 }
 
@@ -110,14 +118,17 @@ DSTATUS USER_status (
   * @retval DRESULT: Operation result
   */
 DRESULT USER_read (
-	BYTE pdrv,      /* Physical drive nmuber to identify the drive */
-	BYTE *buff,     /* Data buffer to store read data */
-	DWORD sector,   /* Sector address in LBA */
-	UINT count      /* Number of sectors to read */
+  BYTE pdrv,      /* Physical drive nmuber to identify the drive */
+  BYTE *buff,     /* Data buffer to store read data */
+  DWORD sector,   /* Sector address in LBA */
+  UINT count      /* Number of sectors to read */
 )
 {
   /* USER CODE BEGIN READ */
-    return RES_OK;
+  for (int i=0; i<count; i++)
+    if (sd_read(&hw, sector+i, buff+512*i) != 0)
+      return RES_ERROR;
+  return RES_OK;
   /* USER CODE END READ */
 }
 
@@ -131,15 +142,18 @@ DRESULT USER_read (
   */
 #if _USE_WRITE == 1
 DRESULT USER_write (
-	BYTE pdrv,          /* Physical drive nmuber to identify the drive */
-	const BYTE *buff,   /* Data to be written */
-	DWORD sector,       /* Sector address in LBA */
-	UINT count          /* Number of sectors to write */
+  BYTE pdrv,          /* Physical drive nmuber to identify the drive */
+  const BYTE *buff,   /* Data to be written */
+  DWORD sector,       /* Sector address in LBA */
+  UINT count          /* Number of sectors to write */
 )
 {
   /* USER CODE BEGIN WRITE */
   /* USER CODE HERE */
-    return RES_OK;
+  for (int i=0; i<count; i++)
+    if (sd_write(&hw, sector+i, buff+512*i) != 0)
+      return RES_ERROR;
+  return RES_OK;
   /* USER CODE END WRITE */
 }
 #endif /* _USE_WRITE == 1 */
@@ -153,14 +167,28 @@ DRESULT USER_write (
   */
 #if _USE_IOCTL == 1
 DRESULT USER_ioctl (
-	BYTE pdrv,      /* Physical drive nmuber (0..) */
-	BYTE cmd,       /* Control code */
-	void *buff      /* Buffer to send/receive control data */
+  BYTE pdrv,      /* Physical drive nmuber (0..) */
+  BYTE cmd,       /* Control code */
+  void *buff      /* Buffer to send/receive control data */
 )
 {
   /* USER CODE BEGIN IOCTL */
-    DRESULT res = RES_ERROR;
-    return res;
+  switch (cmd)
+  {
+    case CTRL_SYNC:
+      return RES_OK;
+    case GET_SECTOR_SIZE:
+      *(WORD*)buff = 512;
+      return RES_OK;
+    case GET_SECTOR_COUNT:
+      *(DWORD*)buff = hw.sectors;
+      return RES_OK;
+    case GET_BLOCK_SIZE:
+      *(DWORD*)buff = hw.erase_sectors;
+      return RES_OK;
+  }
+  DRESULT res = RES_ERROR;
+  return res;
   /* USER CODE END IOCTL */
 }
 #endif /* _USE_IOCTL == 1 */

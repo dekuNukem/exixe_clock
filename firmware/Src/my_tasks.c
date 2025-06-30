@@ -14,6 +14,7 @@
 #include "minmea.h"
 #include "config.h"
 #include "buttons.h"
+#include "fatfs.h"
 
 // comment this out to use IN-12 tubes
 #define USE_EXIXE_14
@@ -54,6 +55,13 @@ struct minmea_sentence_gsa gps_gsa;
 struct minmea_sentence_gll gps_gll;
 struct minmea_sentence_gst gps_gst;
 struct minmea_sentence_gsv gps_gsv;
+
+FRESULT sd_fresult;
+FATFS sd_fs;
+FIL sd_file;
+DIR dir;
+FILINFO fno;
+UINT bytes_written, bytes_read;
 
 void spi_send(uint8_t* data, uint8_t size, uint8_t index)
 {
@@ -129,6 +137,9 @@ void setup_task(void)
     is_in_setup_mode = SETUP_12H24H;
   else
     printf("launching scheduler...\n");
+
+  sd_fresult = f_mount(&sd_fs, "", 1);
+  printf("mount sd: %d\n", sd_fresult);
 }
 
 void animation_task_start(void const * argument)

@@ -27,6 +27,7 @@
 #include "helpers.h"
 #include "my_tasks.h"
 #include "delay_us.h"
+#include "sd_util.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -81,8 +82,8 @@ void StartDefaultTask(void const * argument);
 /* USER CODE BEGIN 0 */
 int fputc(int ch, FILE *f)
 {
-    HAL_UART_Transmit(&huart3, (unsigned char *)&ch, 1, 100);
-    return ch;
+  HAL_UART_Transmit(&huart3, (unsigned char *)&ch, 1, 100);
+  return ch;
 }
 /* USER CODE END 0 */
 

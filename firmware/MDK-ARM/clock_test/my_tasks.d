@@ -69,3 +69,11 @@ clock_test\my_tasks.o: ../Inc/eeprom.h
 clock_test\my_tasks.o: ../Inc/gps_config.h
 clock_test\my_tasks.o: ../Inc/config.h
 clock_test\my_tasks.o: ../Inc/buttons.h
+clock_test\my_tasks.o: ../Inc/fatfs.h
+clock_test\my_tasks.o: ../Middlewares/Third_Party/FatFs/src/ff.h
+clock_test\my_tasks.o: ../Middlewares/Third_Party/FatFs/src/integer.h
+clock_test\my_tasks.o: ../Inc/ffconf.h
+clock_test\my_tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
+clock_test\my_tasks.o: ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h
+clock_test\my_tasks.o: ../Middlewares/Third_Party/FatFs/src/diskio.h
+clock_test\my_tasks.o: ../Inc/user_diskio.h
