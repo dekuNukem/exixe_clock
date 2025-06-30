@@ -498,6 +498,16 @@
               <FilePath>..\Inc\buttons.h</FilePath>
             </File>
             <File>
+              <FileName>sd_util.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\sd_util.c</FilePath>
+            </File>
+            <File>
+              <FileName>sd_util.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\sd_util.h</FilePath>
+            </File>
+            <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Src/main.c</FilePath>
@@ -684,16 +694,6 @@
                   </Cads>
                 </FileArmAds>
               </FileOption>
-            </File>
-            <File>
-              <FileName>sd_util.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Src\sd_util.c</FilePath>
-            </File>
-            <File>
-              <FileName>sd_util.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Inc\sd_util.h</FilePath>
             </File>
           </Files>
         </Group>

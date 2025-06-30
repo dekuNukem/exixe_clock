@@ -65,6 +65,9 @@ UINT bytes_written, bytes_read;
 
 char last_rmc[GPS_BUF_SIZE];
 
+#define SD_WRITE_BUF_SIZE 256
+char sd_write_buf[SD_WRITE_BUF_SIZE];
+
 void spi_send(uint8_t* data, uint8_t size, uint8_t index)
 {
   GPIO_TypeDef *target_port;
