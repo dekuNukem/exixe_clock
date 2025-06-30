@@ -51,6 +51,14 @@ clock_test\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
 clock_test\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
 clock_test\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 clock_test\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
+clock_test\main.o: ../Inc/fatfs.h
+clock_test\main.o: ../Middlewares/Third_Party/FatFs/src/ff.h
+clock_test\main.o: ../Middlewares/Third_Party/FatFs/src/integer.h
+clock_test\main.o: ../Inc/ffconf.h
+clock_test\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
+clock_test\main.o: ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h
+clock_test\main.o: ../Middlewares/Third_Party/FatFs/src/diskio.h
+clock_test\main.o: ../Inc/user_diskio.h
 clock_test\main.o: ../Inc/shared.h
 clock_test\main.o: ../Inc/helpers.h
 clock_test\main.o: ../Inc/minmea.h

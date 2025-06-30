@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "cmsis_os.h"
+#include "fatfs.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -123,6 +124,7 @@ int main(void)
   MX_TIM2_Init();
   MX_USART1_UART_Init();
   MX_USART3_UART_Init();
+  MX_FATFS_Init();
   /* USER CODE BEGIN 2 */
   delay_us_init(&htim2);
   HAL_IWDG_Refresh(iwdg_ptr);

@@ -12,6 +12,8 @@
 "clock_test\buttons.o"
 "clock_test\main.o"
 "clock_test\freertos.o"
+"clock_test\user_diskio.o"
+"clock_test\fatfs.o"
 "clock_test\stm32f0xx_it.o"
 "clock_test\stm32f0xx_hal_msp.o"
 "clock_test\stm32f0xx_hal_timebase_tim.o"
@@ -49,6 +51,10 @@
 "clock_test\cmsis_os.o"
 "clock_test\heap_1.o"
 "clock_test\port.o"
+"clock_test\diskio.o"
+"clock_test\ff.o"
+"clock_test\ff_gen_drv.o"
+"clock_test\syscall.o"
 --library_type=microlib --strict --scatter "clock_test\clock_test.sct"
 --diag_suppress=L6329 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
