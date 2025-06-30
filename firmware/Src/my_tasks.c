@@ -233,14 +233,10 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
     HAL_GPIO_WritePin(USER_LED_GPIO_Port, USER_LED_Pin, GPIO_PIN_SET);
   
   if(gps_rmc.date.year >= 17)
-  {
-    current_time = get_time_rmc(&gps_rmc);
-  }
+    current_time = get_time_rmc(&gps_rmc) + 1;
   else
-  {
     current_time++;
-  }
-  
+
   unix_ts_2_datetime(current_time + 3600 * utc_offset, &year, &month, &day, &hour, &minute, &second);
   if(use_24hour == 0 && hour > 12)
     hour -= 12;
