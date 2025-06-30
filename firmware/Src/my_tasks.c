@@ -121,7 +121,6 @@ void setup_task(void)
   button_init(&down_button, HAL_GPIO_ReadPin(DOWN_BUTTON_GPIO_Port, DOWN_BUTTON_Pin));
   HAL_UART_Receive_IT(gps_uart_ptr, gps_byte_buf, 1);
   display_mode = get_display_mode();
-  current_time = get_time_rtc();
   utc_offset = get_utc_offset();
   use_24hour = get_use_24hour();
   if(HAL_GPIO_ReadPin(DOWN_BUTTON_GPIO_Port, DOWN_BUTTON_Pin) == GPIO_PIN_RESET)
@@ -220,7 +219,6 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   if(gps_rmc.date.year >= 17)
   {
     current_time = get_time_rmc(&gps_rmc);
-    rtc_gps_calib(&gps_rmc);
   }
   else
   {

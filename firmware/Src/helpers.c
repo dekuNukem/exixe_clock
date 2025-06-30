@@ -10,11 +10,6 @@
 #define DAYS_PER_100Y (365*100 + 24)
 #define DAYS_PER_4Y   (365*4   + 1)
 
-RTC_TimeTypeDef time_to_update;
-RTC_DateTypeDef date_to_update;
-RTC_TimeTypeDef rtc_current_time;
-RTC_DateTypeDef rtc_current_date;
-
 int32_t linear_buf_init(linear_buf *lb, int32_t size)
 {
   lb->buf_size = size;
@@ -75,38 +70,6 @@ int32_t linear_buf_idle(linear_buf *lb, int32_t timeout)
   if(lb->curr_index > 0 && HAL_GetTick() - lb->last_recv > timeout)
     return 1;
   return 0;
-}
-
-uint8_t rtc_gps_calib(struct minmea_sentence_rmc *gps_rmc)
-{
-  static int32_t next_rtc_calib = 0;
-  if(HAL_GetTick() < 2000 || HAL_GetTick() < next_rtc_calib)
-    return 1;
-  time_to_update.Hours = gps_rmc->time.hours;
-  time_to_update.Minutes = gps_rmc->time.minutes;
-  time_to_update.Seconds = gps_rmc->time.seconds;
-  date_to_update.Month = gps_rmc->date.month;
-  date_to_update.Date = gps_rmc->date.day;
-  date_to_update.Year = gps_rmc->date.year;
-  HAL_RTC_SetTime(rtc_ptr, &time_to_update, RTC_FORMAT_BIN);
-  HAL_RTC_SetDate(rtc_ptr, &date_to_update, RTC_FORMAT_BIN);
-  next_rtc_calib = HAL_GetTick() + RTC_CALIB_FREQ_MS;
-  return 0;
-}
-
-int32_t get_time_rtc(void)
-{
-  HAL_RTC_GetTime(rtc_ptr, &rtc_current_time, RTC_FORMAT_BIN);
-  HAL_RTC_GetDate(rtc_ptr, &rtc_current_date, RTC_FORMAT_BIN);
-  struct tm unix_t;
-  unix_t.tm_year = 100 + rtc_current_date.Year;
-  unix_t.tm_mon = rtc_current_date.Month - 1;
-  unix_t.tm_mday = rtc_current_date.Date;
-  unix_t.tm_hour = rtc_current_time.Hours;
-  unix_t.tm_min = rtc_current_time.Minutes;
-  unix_t.tm_sec = rtc_current_time.Seconds;
-  unix_t.tm_isdst = 0; 
-  return mktime(&unix_t) + 2;
 }
 
 int32_t get_time_rmc(struct minmea_sentence_rmc *gps_rmc)

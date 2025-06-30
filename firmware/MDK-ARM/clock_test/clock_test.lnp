@@ -33,8 +33,6 @@
 "clock_test\stm32f0xx_hal_flash_ex.o"
 "clock_test\stm32f0xx_hal_exti.o"
 "clock_test\stm32f0xx_hal_iwdg.o"
-"clock_test\stm32f0xx_hal_rtc.o"
-"clock_test\stm32f0xx_hal_rtc_ex.o"
 "clock_test\stm32f0xx_hal_spi.o"
 "clock_test\stm32f0xx_hal_spi_ex.o"
 "clock_test\stm32f0xx_hal_tim.o"

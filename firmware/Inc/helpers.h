@@ -33,8 +33,6 @@ int32_t linear_buf_idle(linear_buf *lb, int32_t timeout);
 int32_t linear_buf_line_available(linear_buf *lb);
 int32_t linear_buf_add(linear_buf *lb, uint8_t c);
 int32_t linear_buf_add_str(linear_buf *lb, uint8_t *s, uint32_t len);
-uint8_t rtc_gps_calib(struct minmea_sentence_rmc *gps_rmc);
-int32_t get_time_rtc(void);
 int32_t get_time_rmc(struct minmea_sentence_rmc *gps_rmc);
 void unix_ts_2_datetime(int32_t ts, uint8_t* year, uint8_t* month, uint8_t* day, uint8_t* hour, uint8_t* minute, uint8_t* second);
 
