@@ -63,6 +63,8 @@ DIR dir;
 FILINFO fno;
 UINT bytes_written, bytes_read;
 
+char last_rmc[GPS_BUF_SIZE];
+
 void spi_send(uint8_t* data, uint8_t size, uint8_t index)
 {
   GPIO_TypeDef *target_port;
@@ -247,7 +249,6 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
     tube_print2(second, &(tube_animation[1]), &(tube_animation[0]), ANIMATION_CROSS_FADE);
   else
     tube_print2(raw_temp, &(tube_animation[1]), &(tube_animation[0]), ANIMATION_CROSS_FADE);
-    
   printf("----\n");
   // led display
   if(display_mode == DISPLAY_MODE_TIME_TEMP)
@@ -262,6 +263,10 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
     for (int i = 0; i < TUBE_COUNT; ++i)
       led_start_animation(&(rgb_animation[i]), rgb_orange, ANIMATION_CROSS_FADE);
   }
+
+  // printf("%d %02d%02d%02d %02d%02d%02d %d %s\n", raw_temp, year, month, day, hour, minute, second, utc_offset, last_rmc);
+  printf("{\"temp\": %d, \"date\": \"20%02d-%02d-%02d\", \"time\": \"%02d:%02d:%02d\", \"utc_offset\": %d, \"last_rmc\": \"%s\"}\n",
+       raw_temp, year, month, day, hour, minute, second, utc_offset, last_rmc);
 }
 
 void gps_temp_parse_task_start(void const * argument)
@@ -272,7 +277,8 @@ void gps_temp_parse_task_start(void const * argument)
     HAL_IWDG_Refresh(iwdg_ptr);
     if(linear_buf_line_available(&gps_lb))
     {
-      printf("gps: %s\n", gps_lb.buf);
+      memset(last_rmc, 0, GPS_BUF_SIZE);
+      strncpy(last_rmc, gps_lb.buf, GPS_BUF_SIZE);
       parse_gps((char*)gps_lb.buf, &gps_rmc, &gps_gga, &gps_gsa, &gps_gll, &gps_gst, &gps_gsv);
       linear_buf_reset(&gps_lb);
     }
