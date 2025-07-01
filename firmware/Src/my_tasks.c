@@ -17,7 +17,7 @@
 #include "fatfs.h"
 
 // comment this out to use IN-12 tubes
-#define USE_EXIXE_14
+// #define USE_EXIXE_14
 
 #ifdef USE_EXIXE_14
 #define TUBE1 0
@@ -288,16 +288,17 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
       led_start_animation(&(rgb_animation[i]), rgb_orange, ANIMATION_CROSS_FADE);
   }
 
-  counter++;
-  if(counter % 60)
-    return;
   replace_nlcr_with_space(last_rmc, GPS_BUF_SIZE);
   memset(sd_write_buf, 0, SD_WRITE_BUF_SIZE);
-  sprintf(sd_write_buf, "{\"temp\": %d, \"date\": \"20%02d-%02d-%02d\", \"time\": \"%02d:%02d:%02d\", \"utc_offset\": %d, \"last_rmc\": \"%s\"}\n",
-       raw_temp, year, month, day, hour, minute, second, utc_offset, last_rmc);
-  // printf("%s", sd_write_buf);
+  // sprintf(sd_write_buf, "{\"temp\": %d, \"date\": \"20%02d-%02d-%02d\", \"time\": \"%02d:%02d:%02d\", \"utc_offset\": %d, \"last_rmc\": \"%s\"}\n",
+  //      raw_temp, year, month, day, hour, minute, second, utc_offset, last_rmc);
+
+  printf("%s", sd_write_buf);
+  counter++;
+  if(counter % 30)
+    return;
   sd_error_count += write_log(sd_write_buf);
-  printf("sd: %d\n", sd_error_count);
+  // printf("sd: %d\n", sd_error_count);
 }
 
 void my_halt(void)
@@ -316,7 +317,7 @@ void gps_temp_parse_task_start(void const * argument)
   uint8_t loop_count = 0;
   for(;;)
   {
-    if(sd_error_count > 10)
+    if(sd_error_count > 5)
       my_halt();
 
     HAL_IWDG_Refresh(iwdg_ptr);

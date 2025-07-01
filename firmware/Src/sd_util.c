@@ -37,7 +37,7 @@ static void spi_set_speed(enum sd_speed speed)
   HAL_SPI_DeInit(spi1_ptr);
   spi1_ptr->Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_128;
   if(speed == SD_SPEED_25MHZ)
-    spi1_ptr->Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
+    spi1_ptr->Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_8;
   HAL_SPI_Init(spi1_ptr);
   u8 dummy = 0;
   HAL_SPI_Transmit(spi1_ptr, &dummy, 1, 500);
