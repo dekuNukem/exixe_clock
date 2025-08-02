@@ -38,7 +38,7 @@
 uint8_t spi_buf[SPI_CMD_SIZE];
 uint8_t gps_byte_buf[1];
 uint32_t frame_counter;
-int16_t raw_temp;
+int16_t raw_temp, temp_c_int;
 int32_t current_time;
 uint8_t year, month, day, hour, minute, second;
 uint8_t display_mode, is_in_setup_mode, use_24hour;
@@ -272,7 +272,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   if(display_mode == DISPLAY_MODE_TIME_ONLY)
     tube_print2(second, &(tube_animation[1]), &(tube_animation[0]), ANIMATION_CROSS_FADE);
   else
-    tube_print2(raw_temp, &(tube_animation[1]), &(tube_animation[0]), ANIMATION_CROSS_FADE);
+    tube_print2(temp_c_int, &(tube_animation[1]), &(tube_animation[0]), ANIMATION_CROSS_FADE);
   // printf("----\n");
   // led display
   if(display_mode == DISPLAY_MODE_TIME_TEMP)
@@ -288,29 +288,31 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
       led_start_animation(&(rgb_animation[i]), rgb_orange, ANIMATION_CROSS_FADE);
   }
 
-  replace_nlcr_with_space(last_rmc, GPS_BUF_SIZE);
-  memset(sd_write_buf, 0, SD_WRITE_BUF_SIZE);
-  // sprintf(sd_write_buf, "{\"temp\": %d, \"date\": \"20%02d-%02d-%02d\", \"time\": \"%02d:%02d:%02d\", \"utc_offset\": %d, \"last_rmc\": \"%s\"}\n",
-  //      raw_temp, year, month, day, hour, minute, second, utc_offset, last_rmc);
-
-  printf("%s", sd_write_buf);
+  // printf("%s", sd_write_buf);
   counter++;
-  if(counter % 30)
+  if(counter % 20)
     return;
+
+  replace_nlcr_with_space(last_rmc, GPS_BUF_SIZE);
+  double temp_c_float = (double)raw_temp / (double)16;
+  memset(sd_write_buf, 0, SD_WRITE_BUF_SIZE);
+  sprintf(sd_write_buf, "{\"temp\": %.2f, \"date\": \"20%02d-%02d-%02d\", \"time\": \"%02d:%02d:%02d\", \"utc_offset\": %d, \"last_rmc\": \"%s\"}\n",
+       temp_c_float, year, month, day, hour, minute, second, utc_offset, last_rmc);
+
   sd_error_count += write_log(sd_write_buf);
   // printf("sd: %d\n", sd_error_count);
 }
 
-void my_halt(void)
-{
-  HAL_NVIC_DisableIRQ(EXTI4_15_IRQn);
-  while(1)
-  {
-    HAL_GPIO_TogglePin(USER_LED_GPIO_Port, USER_LED_Pin);
-    osDelay(100);
-    HAL_IWDG_Refresh(iwdg_ptr);
-  }
-}
+// void my_halt(void)
+// {
+//   HAL_NVIC_DisableIRQ(EXTI4_15_IRQn);
+//   while(1)
+//   {
+//     HAL_GPIO_TogglePin(USER_LED_GPIO_Port, USER_LED_Pin);
+//     osDelay(100);
+//     HAL_IWDG_Refresh(iwdg_ptr);
+//   }
+// }
 
 void gps_temp_parse_task_start(void const * argument)
 {
@@ -318,7 +320,7 @@ void gps_temp_parse_task_start(void const * argument)
   for(;;)
   {
     if(sd_error_count > 5)
-      my_halt();
+      HAL_NVIC_SystemReset();
 
     HAL_IWDG_Refresh(iwdg_ptr);
     if(linear_buf_line_available(&gps_lb))
@@ -331,7 +333,10 @@ void gps_temp_parse_task_start(void const * argument)
     if(loop_count == 0)
       ds18b20_start_conversion();
     if(loop_count == 8)
-      raw_temp = ds18b20_get_temp() >> 4;
+    {
+      raw_temp = ds18b20_get_temp();
+      temp_c_int = raw_temp >> 4;
+    }
     loop_count = (loop_count + 1) % 10;
     osDelay(100);
   }
